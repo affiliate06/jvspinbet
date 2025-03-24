@@ -1,0 +1,480 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; }
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Montserrat", serif;
+  background: url("../images/background.png") no-repeat center/cover; }
+
+@keyframes popupAnimation {
+  to {
+    transform: scale(1); } }
+@keyframes coinAnimation {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(-20px); } }
+@keyframes coinAnimationMobile {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(-10px); } }
+.main {
+  width: 100%;
+  height: 100%; }
+
+.header-block {
+  padding: 45px 45px 45px 105px;
+  display: flex;
+  align-items: center;
+  position: relative; }
+  .header-block .logo-block {
+    width: 320px;
+    height: 124px; }
+  .header-block .text-block {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 40px;
+    text-align: center; }
+    .header-block .text-block h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px; }
+    .header-block .text-block h1, .header-block .text-block h2 {
+      color: #fff;
+      text-transform: uppercase; }
+    .header-block .text-block h2 {
+      font-size: 42px;
+      font-weight: 600; }
+      .header-block .text-block h2 span.small-text {
+        font-size: 24px; }
+      .header-block .text-block h2 span.highlighted-text {
+        color: #FF9900; }
+
+.character-images, .animated-coins {
+  position: fixed;
+  left: 0;
+  width: 100%; }
+
+.character-images {
+  height: 80%;
+  bottom: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 50% 50%; }
+
+.animated-coins {
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .animated-coins .coin {
+    position: absolute;
+    z-index: 1;
+    animation: coinAnimation 5s infinite ease-in-out; }
+  .animated-coins .coin1 {
+    width: 140px;
+    height: 150px;
+    top: 25%;
+    left: 22%;
+    animation-delay: 1.5s; }
+  .animated-coins .coin2 {
+    width: 246px;
+    height: 166px;
+    bottom: 10%;
+    right: -2%;
+    animation-delay: 2.5s; }
+  .animated-coins .coin3 {
+    width: 96px;
+    height: 81px;
+    top: 17%;
+    right: 23%;
+    animation-delay: 3.5s; }
+  .animated-coins .goldHorseshoe {
+    width: 210px;
+    height: 160px;
+    top: 70%;
+    left: 25%;
+    animation-delay: 1s; }
+  .animated-coins .wisdom1 {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    right: 5%;
+    animation-delay: 4s; }
+  .animated-coins .wisdom2 {
+    width: 250px;
+    height: 250px;
+    top: 20%;
+    right: -3%;
+    animation-delay: 5s; }
+
+.character-img {
+  position: absolute;
+  top: 0; }
+  .character-img.character-img-left {
+    left: -15%;
+    bottom: -15%; }
+  .character-img.character-img-right {
+    right: 0;
+    bottom: -15%; }
+
+.content {
+  position: relative;
+  margin: 50px auto 0;
+  max-width: calc((3 * 160px) + (2 * 75px));
+  padding-bottom: 120px;
+  z-index: 99; }
+  .content .items {
+    width: 100%;
+    gap: 75px;
+    display: flex;
+    flex-wrap: wrap; }
+  .content .item {
+    width: 160px;
+    height: 154px;
+    cursor: pointer;
+    position: relative; }
+    .content .item:hover {
+      transform: scale(1.125);
+      transition: transform 0.7s ease; }
+    .content .item.active {
+      transform: scale(5);
+      transition: transform 0.3s ease 0.05s; }
+      .content .item.active img {
+        position: relative;
+        z-index: 1; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 99; }
+  .footer img {
+    object-fit: cover; }
+
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  overflow: auto;
+  padding: 16px 4px; }
+  .popup-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 12px;
+    border: 2px solid #FF7527;
+    width: 47%;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 42px;
+    z-index: 9; }
+  .popup.opened {
+    opacity: 1;
+    visibility: visible; }
+    .popup.opened .popup-content {
+      animation: popupAnimation 0.2s ease forwards; }
+  .popup h5 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px; }
+  .popup h4 {
+    font-size: 32px;
+    font-weight: 600; }
+    .popup h4 span {
+      color: #FF9900; }
+  .popup img {
+    height: 340px;
+    width: 340px;
+    margin: 40px 0 48px; }
+  .popup .btn {
+    background: linear-gradient(165.95deg, #FFB800 10.01%, #FF7527 89.99%);
+    border-radius: 8px;
+    border: none;
+    min-width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 600;
+    color: #000;
+    padding: 15px;
+    cursor: pointer; }
+
+@media (min-width: 1800px) {
+  .footer {
+    min-height: 120px;
+    height: 12%; } }
+@media (max-width: 1720px) {
+  .header-block {
+    padding: 30px 30px 30px 65px; }
+    .header-block .logo-block {
+      width: 220px; }
+    .header-block .text-block {
+      margin-top: 30px; }
+      .header-block .text-block h1 {
+        font-size: 30px; }
+      .header-block .text-block h2 {
+        font-size: 35px; }
+
+  .character-img.character-img-left {
+    left: -18%; }
+
+  .content {
+    margin: 40px auto 0;
+    max-width: calc((3 * 120px) + (2 * 45px)); }
+    .content .items {
+      gap: 45px; }
+    .content .item {
+      width: 120px;
+      height: 115px; }
+
+  .footer {
+    height: 90px; }
+
+  .animated-coins .coin1 {
+    width: 120px;
+    height: 130px;
+    top: 17%;
+    left: 20%; }
+  .animated-coins .coin2 {
+    width: 200px;
+    height: 120px;
+    bottom: 8%;
+    right: -4%; }
+  .animated-coins .coin3 {
+    width: 80px;
+    height: 60px;
+    top: 10%;
+    right: 20%; }
+  .animated-coins .goldHorseshoe {
+    width: 140px;
+    height: 120px;
+    top: 73%;
+    left: 25%; }
+  .animated-coins .wisdom1 {
+    width: 160px;
+    height: 160px;
+    top: 8%;
+    right: 5%; }
+  .animated-coins .wisdom2 {
+    width: 160px;
+    height: 160px;
+    top: 15%;
+    right: -3%; } }
+@media (max-width: 1440px) {
+  .header-block {
+    padding: 24px 24px 24px 40px; }
+    .header-block .logo-block {
+      width: 160px;
+      height: auto; }
+    .header-block .text-block {
+      margin-top: 24px; }
+      .header-block .text-block h1 {
+        font-size: 24px; }
+      .header-block .text-block h2 {
+        font-size: 28px; }
+
+  .content {
+    margin: 32px auto 0;
+    max-width: calc((3 * 90px) + (2 * 35px)); }
+    .content .items {
+      gap: 35px; }
+    .content .item {
+      width: 90px;
+      height: 100px; }
+
+  .footer {
+    height: 80px; } }
+@media (max-width: 1200px) {
+  .header-block .logo-block {
+    width: 140px; }
+  .header-block .text-block h1 {
+    font-size: 20px; }
+  .header-block .text-block h2 {
+    font-size: 24px; }
+
+  .content {
+    margin: 24px auto 0;
+    max-width: calc((3 * 75px) + (2 * 28px)); }
+    .content .items {
+      gap: 28px; }
+    .content .item {
+      width: 75px;
+      height: 95px; }
+
+  .footer {
+    height: 70px; }
+
+  .popup img {
+    height: 270px;
+    width: 270px;
+    margin: 28px 0 30px; }
+  .popup-content {
+    width: 55%;
+    padding: 32px; }
+  .popup h4 {
+    font-size: 28px; } }
+@media (max-width: 1024px) {
+  .popup img {
+    height: 200px;
+    width: 200px; }
+
+  .character-images {
+    height: 70%; }
+
+  .animated-coins .coin1 {
+    width: 100px;
+    height: 100px;
+    top: 17%;
+    left: 20%; }
+  .animated-coins .coin2 {
+    width: 100px;
+    height: 100px;
+    bottom: 8%;
+    right: -4%; }
+  .animated-coins .coin3 {
+    width: 60px;
+    height: 50px;
+    top: 10%;
+    right: 20%; }
+  .animated-coins .goldHorseshoe {
+    width: 100px;
+    height: 80px;
+    top: 73%;
+    left: 25%; }
+  .animated-coins .wisdom1 {
+    width: 100px;
+    height: 100px;
+    top: 8%;
+    right: 5%; }
+  .animated-coins .wisdom2 {
+    width: 100px;
+    height: 100px;
+    top: 15%;
+    right: -3%; }
+
+  .footer {
+    height: 55px; } }
+@media (max-width: 800px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+
+  .header-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px; }
+    .header-block .text-block {
+      position: relative;
+      margin-top: 20px;
+      top: auto;
+      left: auto;
+      transform: translate(0); }
+      .header-block .text-block h2 {
+        font-size: 20px; }
+        .header-block .text-block h2 span.small-text {
+          font-size: 20px; }
+
+  .content {
+    margin: 0;
+    max-width: calc((3 * 70px) + (2 * 32px)); }
+    .content .items {
+      gap: 32px; }
+    .content .item {
+      width: 70px;
+      height: 68px; }
+
+  .footer {
+    height: 48px; }
+
+  .popup img {
+    height: 254px;
+    width: 254px;
+    margin: 28px 0 30px; }
+  .popup-content {
+    width: calc(100% - 2em);
+    padding: 26px; }
+  .popup h4, .popup h5 {
+    font-size: 24px; }
+  .popup .btn {
+    width: 100%;
+    padding: 12px; }
+
+  .character-images {
+    height: 45%; }
+
+  .animated-coins .coin {
+    animation: coinAnimationMobile 4s infinite ease-in-out; }
+  .animated-coins .coin1 {
+    width: 35px;
+    height: 35px;
+    top: 65%;
+    left: 80%;
+    animation-delay: 1.2s; }
+  .animated-coins .coin2 {
+    right: -20%;
+    bottom: -2%; }
+  .animated-coins .coin3 {
+    width: 30px;
+    height: 30px;
+    top: 60%;
+    right: 75%; }
+  .animated-coins .goldHorseshoe {
+    display: none; }
+  .animated-coins .wisdom1 {
+    top: 53%;
+    animation-delay: 1.7s; }
+  .animated-coins .wisdom2 {
+    top: 67%;
+    animation-delay: 2s; } }
+@media (max-width: 600px) {
+  .character-images {
+    height: 35%; }
+
+  .footer {
+    height: 52px; } }
+@media (max-height: 500px) {
+  .popup {
+    align-items: start; } }
+@media (max-width: 400px) {
+  .header-block {
+    padding: 20px; }
+    .header-block .logo-block {
+      width: 100px; }
+    .header-block .text-block {
+      margin-top: 12px; }
+      .header-block .text-block h1, .header-block .text-block h2, .header-block .text-block h2 > span {
+        font-size: 16px; } }
+
+/*# sourceMappingURL=styles.css.map */
