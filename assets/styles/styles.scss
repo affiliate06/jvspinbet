@@ -21,6 +21,10 @@ body {
   background: url("../images/background.png") no-repeat center / cover;
 }
 
+a {
+  text-decoration: none;
+}
+
 // animations
 @keyframes popupAnimation {
   to {
@@ -312,6 +316,7 @@ body {
     color: #000;
     padding: 15px;
     cursor: pointer;
+    text-decoration: none;
   }
 }
 
