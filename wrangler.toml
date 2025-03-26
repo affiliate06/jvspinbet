@@ -1,0 +1,10 @@
+name = "jvspinbet"
+type = "static_site"  # Tells Cloudflare Pages it's a static website
+
+account_id = "affiliate06"
+workers_dev = true
+compatibility_date = "2025-03-24"
+
+[build]
+command = ""  # No build step needed for a basic static site
+directory = "."  # This is the output folder where your files are located
